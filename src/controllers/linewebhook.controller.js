@@ -592,7 +592,7 @@ module.exports = function(wsConnections) {
       console.log(error.message);
       res.status(202).json({
         status: "error",
-        message : error.message,
+        message : error,
       });
     }
   }
