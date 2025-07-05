@@ -18,7 +18,7 @@ RUN apt-get update && apt-get install -y \
 WORKDIR /linewebhookapi
 
 # คัดลอก package files ก่อน เพื่อใช้ Docker cache
-COPY package.json package-lock.json ./
+COPY package.json ./
 
 # ติดตั้ง dependencies
 RUN npm install
