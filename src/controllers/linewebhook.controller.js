@@ -192,7 +192,7 @@ module.exports = function(wsConnections) {
       let channelToken ="";
       channelToken = tmpChatSetting['channel_token'];
 
-      console.log(tmp_data);
+      console.log(JSON.stringify(tmp_data));
       
       const lineChatAPI = new LineChatAPI();
       lineChatAPI.setToken(channelToken);
@@ -262,7 +262,7 @@ module.exports = function(wsConnections) {
         }      
   
       }
-      else (!tmp_data['events'])
+      else if(!tmp_data['events'])
       {
         res.status(202).json(
             { 
@@ -274,6 +274,8 @@ module.exports = function(wsConnections) {
           );
           return;
       }
+
+      
   
       let botUserId = tmpChatSetting['user_id'];
           
