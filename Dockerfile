@@ -12,10 +12,10 @@ FROM node:18-alpine
 #     make \
 #     g++
 
-WORKDIR /VueAPI
+WORKDIR /linewebhookapi
 
 # Copy package files
-COPY package.json package-lock.json /VueAPI/
+COPY package.json package-lock.json /linewebhookapi/
 
 # Install dependencies
 RUN npm install
