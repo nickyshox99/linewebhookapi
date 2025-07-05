@@ -30,4 +30,4 @@ COPY . .
 CMD node app.js
 
 # Expose the application port
-EXPOSE 9500
+EXPOSE ${PORT}
