@@ -194,7 +194,7 @@ module.exports = function(wsConnections) {
       const lineChatAPI = new LineChatAPI();
       lineChatAPI.setToken(channelToken);
   
-      if (tmp_data['events'].length==0) 
+      if (tmp_data['events']==0) 
       {
         console.log("Verify Only");
         //Get Bot Profile      
@@ -264,7 +264,7 @@ module.exports = function(wsConnections) {
           
       let reply_token = req.body.events[0].replyToken? req.body.events[0].replyToken:"";
       let msg = "";
-           
+
       try {
         if (req.body.events[0].message['text']) {
           msg = req.body.events[0].message['text'];
