@@ -1,6 +1,6 @@
 'use strict';
 
-var dbConn = require('../../config/db.config');
+const dbConn = require('../../config/db.config');
 const Secret = require('../../config/secret');
 
 const jwt = require('jsonwebtoken');
