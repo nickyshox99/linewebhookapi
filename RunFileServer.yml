@@ -1,0 +1,30 @@
+
+volumes:
+  volfileserver:
+  
+
+services:
+  fileserver:    
+    restart: always
+    image: vuesubapi:latest
+    container_name: fileserver
+    environment:
+        NODE_ENV: production
+        MYSQL_HOST: db 
+        MYSQL_PORT: 3306 
+        MYSQL_USER: root
+        MYSQL_PASSWORD: sumoh
+        MYSQL_DATABASE: app_db   
+        PORT: 9700
+    ports:
+        - 9700:9700
+    volumes:
+        - volfileserver:/VueAPI    
+    networks:
+      - my-network-name
+
+  
+
+networks:
+  my-network-name:
+   name: my-global-net

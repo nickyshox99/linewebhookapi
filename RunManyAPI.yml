@@ -1,0 +1,108 @@
+
+volumes:
+  volvueapi03:
+  volvueapi04:
+  volvueapi05:
+  volvueapi06:
+  volvueapi07:
+
+services:
+
+  vueapi03:    
+    restart: always
+    image: vuesubapi:latest
+    container_name: vueapi03
+    environment:
+        NODE_ENV: production
+        MYSQL_HOST: db 
+        MYSQL_PORT: 3306 
+        MYSQL_USER: root
+        MYSQL_PASSWORD: sumoh
+        MYSQL_DATABASE: app_db   
+        PORT: 9503
+    ports:
+        - 9503:9503
+    volumes:
+        - volvueapi03:/VueAPI    
+    networks:
+      - my-network-name
+
+  vueapi04:    
+    restart: always
+    image: vuesubapi:latest
+    container_name: vueapi04
+    environment:
+        NODE_ENV: production
+        MYSQL_HOST: db 
+        MYSQL_PORT: 3306 
+        MYSQL_USER: root
+        MYSQL_PASSWORD: sumoh
+        MYSQL_DATABASE: app_db   
+        PORT: 9504
+    ports:
+        - 9504:9504
+    volumes:
+        - volvueapi04:/VueAPI    
+    networks:
+      - my-network-name
+
+  vueapi05:    
+    restart: always
+    image: vuesubapi:latest
+    container_name: vueapi05
+    environment:
+        NODE_ENV: production
+        MYSQL_HOST: db 
+        MYSQL_PORT: 3306 
+        MYSQL_USER: root
+        MYSQL_PASSWORD: sumoh
+        MYSQL_DATABASE: app_db   
+        PORT: 9505
+    ports:
+        - 9505:9505
+    volumes:
+        - volvueapi05:/VueAPI    
+    networks:
+      - my-network-name
+
+  vueapi06:    
+    restart: always
+    image: vuesubapi:latest
+    container_name: vueapi06
+    environment:
+        NODE_ENV: production
+        MYSQL_HOST: db 
+        MYSQL_PORT: 3306 
+        MYSQL_USER: root
+        MYSQL_PASSWORD: sumoh
+        MYSQL_DATABASE: app_db   
+        PORT: 9506
+    ports:
+        - 9506:9506
+    volumes:
+        - volvueapi06:/VueAPI    
+    networks:
+      - my-network-name
+
+  vueapi07:    
+    restart: always
+    image: vuesubapi:latest
+    container_name: vueapi07
+    environment:
+        NODE_ENV: production
+        MYSQL_HOST: db 
+        MYSQL_PORT: 3306 
+        MYSQL_USER: root
+        MYSQL_PASSWORD: sumoh
+        MYSQL_DATABASE: app_db   
+        PORT: 9507
+    ports:
+        - 9507:9507
+    volumes:
+        - volvueapi07:/VueAPI    
+    networks:
+      - my-network-name
+
+networks:
+  my-network-name:
+   name: my-global-net
