@@ -1,33 +1,33 @@
-FROM node:18-alpine
+# ใช้ Node.js บน Debian base เพื่อรองรับ native libs
+FROM node:18
 
-# Install system dependencies
-RUN apk add --no-cache \
-    cairo-dev \
-    cairomm-dev \
-    libjpeg-turbo-dev \
-    pango-dev \
-    pangomm-dev \
-    giflib-dev \
-    python3-dev \
+# ติดตั้ง system dependencies สำหรับ canvas / sharp / ฯลฯ
+RUN apt-get update && apt-get install -y \
+    libcairo2-dev \
+    libjpeg-dev \
+    libpango1.0-dev \
+    libgif-dev \
+    librsvg2-dev \
+    build-essential \
+    python3 \
     make \
-    g++
+    g++ \
+ && rm -rf /var/lib/apt/lists/*
 
+# กำหนด working directory
 WORKDIR /linewebhookapi
 
-# Copy package files
-COPY package.json /linewebhookapi/
+# คัดลอก package files ก่อน เพื่อใช้ Docker cache
+COPY package.json package-lock.json ./
 
-# Install dependencies
+# ติดตั้ง dependencies
 RUN npm install
 
-# Rebuild canvas package
-RUN npm install canvas --build-from-source
-
-# Copy the rest of the application code
+# คัดลอก source code ที่เหลือทั้งหมด
 COPY . .
 
-# Set the default command
-CMD node app.js
-
-# Expose the application port
+# เปิดพอร์ต (Render ใช้ ENV $PORT)
 EXPOSE ${PORT}
+
+# รันแอป
+CMD ["node", "app.js"]
