@@ -163,7 +163,7 @@ module.exports = function(wsConnections) {
       else
       {
         tmpChatSetting =  await MainModel.queryFirstRow(`SELECT * FROM line_setting WHERE pair_key='${pairKey}'`);        
-        if (tmpChatSetting) 
+        if (tmpChatSetting.length==0) 
         {
           console.log("Invalid Pair Key");
           res.status(202).json({
@@ -194,7 +194,7 @@ module.exports = function(wsConnections) {
       const lineChatAPI = new LineChatAPI();
       lineChatAPI.setToken(channelToken);
   
-      if (tmp_data['events']==0) 
+      if (!tmp_data['events'] || tmp_data['events'].length==0) 
       {
         console.log("Verify Only");
         //Get Bot Profile      
@@ -264,7 +264,7 @@ module.exports = function(wsConnections) {
           
       let reply_token = req.body.events[0].replyToken? req.body.events[0].replyToken:"";
       let msg = "";
-
+           
       try {
         if (req.body.events[0].message['text']) {
           msg = req.body.events[0].message['text'];
@@ -589,7 +589,7 @@ module.exports = function(wsConnections) {
       return;
   
     } catch (error) {
-      console.log(error.message);
+      console.log(error);
       res.status(202).json({
         status: "error",
         message : error,
