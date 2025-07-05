@@ -142,6 +142,7 @@ module.exports = function(wsConnections) {
   const webhook = async (req, res) => {
     try {
       console.log("webhook");
+      
   
       //handles null error
       const headers = req.headers;
@@ -190,6 +191,8 @@ module.exports = function(wsConnections) {
       let tmp_data = req.body;
       let channelToken ="";
       channelToken = tmpChatSetting['channel_token'];
+
+      console.log(tmp_data);
       
       const lineChatAPI = new LineChatAPI();
       lineChatAPI.setToken(channelToken);
