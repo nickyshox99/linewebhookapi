@@ -15,7 +15,7 @@ FROM node:18-alpine
 WORKDIR /linewebhookapi
 
 # Copy package files
-COPY package.json package-lock.json /linewebhookapi/
+COPY package.json /linewebhookapi/
 
 # Install dependencies
 RUN npm install
