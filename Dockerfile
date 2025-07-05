@@ -15,7 +15,7 @@ FROM node:18-alpine
 WORKDIR /linewebhookapi
 
 # Copy package files
-COPY ./package.json ./package-lock.json /linewebhookapi/
+COPY package.json package-lock.json /linewebhookapi/
 
 # Install dependencies
 RUN npm install
@@ -24,7 +24,7 @@ RUN npm install
 # RUN npm install canvas --build-from-source
 
 # Copy the rest of the application code
-COPY ./. .
+COPY . .
 
 # Set the default command
 CMD node app.js
