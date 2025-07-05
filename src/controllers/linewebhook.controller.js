@@ -162,9 +162,8 @@ module.exports = function(wsConnections) {
       }
       else
       {
-        tmpChatSetting =  await MainModel.queryFirstRow(`SELECT * FROM line_setting WHERE pair_key='${pairKey}'`);
-        console.log(tmpChatSetting);
-        if (tmpChatSetting.length==0) 
+        tmpChatSetting =  await MainModel.queryFirstRow(`SELECT * FROM line_setting WHERE pair_key='${pairKey}'`);        
+        if (tmpChatSetting) 
         {
           console.log("Invalid Pair Key");
           res.status(202).json({
