@@ -196,8 +196,8 @@ module.exports = function(wsConnections) {
       
       const lineChatAPI = new LineChatAPI();
       lineChatAPI.setToken(channelToken);
-  
-      if (!tmp_data['events'] || tmp_data['events'].length==0) 
+
+      if (tmp_data['events'] && tmp_data['events'].length==0) 
       {
         console.log("Verify Only");
         //Get Bot Profile      
@@ -261,6 +261,18 @@ module.exports = function(wsConnections) {
             }
         }      
   
+      }
+      else (!tmp_data['events'])
+      {
+        res.status(202).json(
+            { 
+                status: 'error', 
+                message: "no events",
+                auth : false,
+                data : [],
+            }
+          );
+          return;
       }
   
       let botUserId = tmpChatSetting['user_id'];
